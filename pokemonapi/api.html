@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pokiapi</title>
+
+
+    <style>
+       *{
+        margin: 20px;
+          
+       }
+       h1{
+        text-shadow: 0 0 10px black;
+        font-size: 50px;
+       }
+       body{
+         display: flex;
+        justify-content: center; 
+        align-items: center;
+        background-image: url(poki.jpeg);
+        background-repeat: no-repeat;
+        background-size: cover;
+       }
+
+       div{
+        height: 600px;
+        width: 600px;
+        box-shadow: 0 0 20px black;
+        border-radius: 20px ;
+        border-color: black;
+        border-style: double; padding: 50px;
+        text-align: center;
+        padding-bottom: 50PX;
+       }
+       #pokemonsprite{
+        padding: 100px;
+        border: 10px black;
+       }
+       input[type="text"] {
+      padding: 10px;
+      border-radius: 7px;
+      border-bottom: 2px solid #171717;
+     
+}
+
+input[type="text"]:focus {
+  border-bottom-color: #131313;
+}
+
+       button {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #716c6e, #191919);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+    </style>
+</head>
+<body>
+
+
+
+
+    <!------body----------->
+    <div  id="div">
+
+
+     <h1>POKEMON API</h1>
+     <input type="text" id="pokemonname" placeholder="Enter pokemon name">
+     <button onclick="fetchdata()"> Fetch Pokemon</button>
+
+     <img src="" alt="Pokemon sprite" id="pokemonsprite" style="display: none;" width="320px" height="320px">
+
+
+    </div>
+
+
+
+     <!--------script---------->
+
+    <script>
+    
+         async function fetchdata() {
+
+            try{
+                
+
+                const pokemonname=document.getElementById("pokemonname").value.toLowerCase();
+
+                const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonname} `);
+
+                if (!response.ok){
+                    throw new Error ("could not able to fetch data");
+                }
+               const data = await response.json();
+               const pokemonsprite=data.sprites.other["official-artwork"].front_default;
+
+               const image=document.getElementById("pokemonsprite");
+               image.src=pokemonsprite;
+               image.style.display="block";
+
+            }
+            catch(error){
+                console.log(error);
+            }
+ 
+         }
+         </script>
+
+
+
+
+   
+</body>
+</html>

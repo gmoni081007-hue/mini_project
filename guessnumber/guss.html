@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!---------------CSS------------------------>
+    <style>
+        body{
+            margin: 20px;
+            padding: 150px;
+            display: flex;
+            justify-content: center;
+            background-image: url("gr.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .one{
+            background-color: rgba(32, 88, 48, 0.401);
+            box-shadow: 0px 15px 30px;
+            width: 70%;
+            border-radius: 19px;
+            border-color: black;
+            border-style: solid;
+            height: 450px;
+            font-size: 30px;
+            font-family: monospace;
+            padding: 10px;
+
+        }
+        #num::placeholder{
+            color: black;
+        }
+        #num:hover{
+            cursor: text;
+            color: black;
+        }
+        #num{
+            border-radius: 10px;
+            border-color: black;
+            border-style: solid;
+            height: 35px;
+            width: 400px;
+            font-size: ;
+            font-size: 20px;
+            background-color: rgba(50, 103, 70, 0.504);
+            color: black;
+        }
+        .button{
+            border-radius: 10px;
+             border-color: black;
+            border-style: solid;
+            height:40px ;
+            background-color:rgba(24, 73, 43, 0.652) ;
+            color: black;
+            font-size: 20px;
+        }
+        .button:hover{
+            box-shadow: 0px 12px 24px black;
+
+        }
+
+    </style>
+
+
+
+</head>
+<body align="center">
+    <div class="one">
+    <h1> Guess the Number</h1>
+    <h2 >From 1 to 10</h2>
+    <input id="num" placeholder="Enter your Guessed Number......">
+    <button onclick="check()" class="button">Check</button>
+    <p id="result"> You are right/ wrong</p>
+    <P id="score"> Your Score is :10</P>
+    </div>
+
+
+
+    <!------------------java------------------->
+
+    <script>
+        var num = document.getElementById("num");
+        var result= document.getElementById('result');
+        var r=Math.floor(Math.random()*10+1);
+        var s=document.getElementById("score");
+        var totalscore=10
+
+        function check(){
+
+            var number=num.value;
+            if(number==r){
+                console.log("Right");
+                result.textContent="Right";
+                alert("YOU WON THE GAME ..........");
+
+            }
+            else{
+                console.log("Wrong");
+                totalscore=totalscore-1;
+                score.textContent="Your Score :"+ totalscore;
+                result.textContent="Wrong";
+                
+            }
+        }
+
+
+
+    </script>
+</body>
+</html>

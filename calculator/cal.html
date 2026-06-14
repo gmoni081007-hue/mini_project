@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Times New Roman', Times, serif;
+            height: 100vh;
+            background-image: url("pu.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            text-align: center;
+            
+        }
+        .display{
+            background-color: #b982cf;
+            color: #000;
+            width: 100;
+            height: 60px;
+            text-align: right;
+            border: none;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            padding: 10px;
+            padding-right: 10px;
+            font-size: 2rem;
+            border: black;
+           border-style: solid
+
+        }
+        .calculator{
+            background-color: #5f3572;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0px 10px 24px;
+           border: black;
+           border-style: solid;
+        }
+        .buttons{
+            display: grid;
+            grid-template-columns: repeat(4,90px);
+            gap:13px;
+            
+
+        }
+        button {
+            height: 80px;
+            font-size: 1.9rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            background: #763a91;
+           color: white;
+           border: black;
+           border-style: solid
+        }
+        button:hover{
+             background:#6f3c86;
+             box-shadow: 0px 5px 5px black;
+
+    }
+
+    .equal {
+      background: #b982cf;
+      color: #000;
+    }
+
+    .equal:hover {
+      background: #b982cf;
+    }
+
+    .clear {
+      background: #b982cf;
+      color: #000;
+    }
+
+    .clear:hover {
+      background:#a370b7;
+    }
+    .del{
+        background-color: #b982cf;
+        color: #000;
+    }
+    .del:hover{
+        background-color: #b982cf;
+    }
+    .one{
+        background-color: #b982cf;
+        color: #000;
+    }
+    .one:hover{
+        background-color: #b982cf;
+    }
+    
+
+
+        
+
+    </style>
+</head>
+<body>
+    
+    <div class="calculator">
+        <input type="text" id="display"  class="display" readonly>
+        <div class="buttons">
+
+
+          <button class="clear" onclick="clearDisplay()">AC</button>
+          <button class="one"  onclick="appendValue('(')">(</button>
+          <button  class=  "one " onclick="appendValue(')')">)</button>
+          <button class="one" onclick="appendValue('+')">+</button>
+
+
+          
+          <button onclick="appendValue('7')">7</button>
+          <button onclick="appendValue('8')">8</button>
+          <button onclick="appendValue('9')">9</button>
+          <button  class="one"  onclick="appendValue('-')">-</button>
+
+
+          
+          <button onclick="appendValue('4')">4</button>
+          <button onclick="appendValue('5')">5</button>
+          <button onclick="appendValue('6')">6</button>
+          <button class="one" onclick="appendValue('*')">x</button>
+
+
+          
+          <button onclick="appendValue('1')">1</button>
+          <button onclick="appendValue('2')">2</button>
+          <button onclick="appendValue('3')">3</button>
+          <button class="one"  onclick="appendValue('/')">/</button>
+
+
+         
+          <button onclick="appendValue('0')">0</button>
+          <button onclick="appendValue('.')">.</button>
+          
+          <button class="del" onclick="deletelast()">DEL</button>
+          <button onclick=" calculate()" class="equal">=</button>
+          
+        </div>
+    </div>
+
+    <script>
+        const display = document.getElementById('display');
+
+    function appendValue(value) {
+      display.value += value;
+    }
+    function deletelast(){
+        display.value=display.value.slice(0,-1);
+    }
+
+    function clearDisplay() {
+      display.value = '';
+    }
+
+    function calculate() {
+      try {
+        display.value = eval(display.value);
+      } catch (error) {
+        display.value = 'Error';
+      }
+    }
+    
+    </script>
+</body>
+</html>

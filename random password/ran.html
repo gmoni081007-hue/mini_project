@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random password</title>
+
+
+    <!-------style------------->
+
+   <style>
+    body{
+        padding-left:300px ;
+        padding-top: 120px;
+        min-height: 100vh;
+        width: 100%;
+        background-image: url("bgg.jpg");
+        background-size: cover;      /* prevents cutting */
+        background-position: center;
+        background-repeat: no-repeat;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+    h1{
+        font-size: 47px;
+        text-shadow: 0 0 50px black;
+        color: rgb(142, 55, 204);
+        text-shadow:
+        1px 1px 0 #111010,
+        2px 2px 0 #070707,
+        3px 3px 0 #0d0d0d,
+        4px 4px 0 #0b0b0b,
+        5px 5px 8px rgba(0,0,0,0.4);
+    }
+    
+    h1:hover{
+        
+        
+        text-shadow:
+        1px 1px 0 #111010,
+        2px 2px 0 #070707,
+        3px 3px 0 #0d0d0d,
+        4px 4px 0 #0b0b0b,
+        5px 5px 8px rgba(0,0,0,0.4)
+
+    }  
+   
+    .display{
+        width: 350px;
+        height: 30px;
+        padding: 5px;
+        border-radius: 5px;
+        background-color: white;
+        padding: 30px;
+        text-align: center;
+        border-style: solid;
+        border-radius: 10px;
+
+    }
+    .display:hover{
+        box-shadow: 0 0 20px;
+    }
+    input{
+        border: none;
+        font-size: 20px;
+        outline: none;   /* removes blue focus border */
+    border: none;
+
+    }
+    #copy{
+        float: right;
+       
+    }
+    .image{
+        width: 30px;
+        
+
+    }
+    button {
+    display: flex;
+    align-items: center;        /* vertical center */
+    justify-content: center;    /* horizontal center */
+    gap: 10px;                  /* space between icon & text */
+
+    padding: 12px 24px;
+    width: 260px;
+    height: 55px;
+    
+
+    background: rgb(142, 55, 204);
+    color: black;
+    border-radius: 20px;
+    border: 3px  solid;
+
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+    
+
+        
+
+    
+    button:hover{
+        box-shadow: 0 0 20px;
+
+    }
+       
+
+
+
+   </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h1>
+            Generate a <br>Random password💜
+        </h1>
+        <div class="display">
+            <input type="text" id="password" placeholder="Password💜"  >
+             <img src="copy.png" id="copy" onclick="copypassword()" alt="copy image">
+           
+        </div><br>
+        <br>
+        <button onclick="createpassword()"><img src="generate.png"  class="image"> Generate Password</button>
+    </div>
+
+
+    <!-------script---------->
+   <script>
+
+    const passwordbox=document.getElementById("password");
+    const l=10;
+
+    const uppercase ="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const lowercase ="abcdefghijklmnopqrstuvwxyz";
+    const number ="0123456789";
+    const symbol ="!@#$%^&*(){}[]<>/-~";
+    const allchars =uppercase + lowercase + number + symbol;
+
+
+
+
+
+    function createpassword(){
+        let password="";
+        password += uppercase[Math.floor(Math.random()* uppercase.length)];
+        password += lowercase[Math.floor(Math.random()* lowercase.length)];
+        password += number[Math.floor(Math.random()* number.length)];
+        password += symbol[Math.floor(Math.random()* symbol.length)];
+
+        while(l>password.length){
+            password +=allchars[Math.floor(Math.random()* allchars.length)];
+
+        }
+
+        passwordbox.value=password;
+
+    }
+
+
+    function copypassword(){
+        passwordbox.select();
+        document.execCommand("copy");
+
+    }
+
+
+
+   </script>
+    
+</body>
+</html>
